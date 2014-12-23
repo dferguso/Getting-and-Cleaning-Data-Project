@@ -101,6 +101,7 @@ AvgTrain_Data<-AvgTrain_Data[indx,]
 # for each activity and each subject.
 AvgAll_TidyData<-aggregate(df[,4:ncol(df)], by=list(df$Type, df$Subject, df$Activity),FUN = mean)
 # Write table to file
-write.table(AvgAll_TidyData,"ActivitySubject_Avg.txt", row.names = FALSE)
+#write.table(AvgAll_TidyData,"ActivitySubject_Avg.txt", row.names = FALSE)
+write.table(meanStd_Data,"ActivitySubject_Avg.txt", row.names = FALSE)
    
 
