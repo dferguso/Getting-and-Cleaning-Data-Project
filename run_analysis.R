@@ -99,9 +99,11 @@ AvgTrain_Data<-AvgTrain_Data[indx,]
 #
 # 5. Creates a second, independent tidy data set with the average of each variable 
 # for each activity and each subject.
-AvgAll_TidyData<-aggregate(df[,4:ncol(df)], by=list(df$Type, df$Subject, df$Activity),FUN = mean)
+# AvgAll_TidyData<-aggregate(df[,4:ncol(df)], by=list(df$Type, df$Subject, df$Activity),FUN = mean)
 # Write table to file
-#write.table(AvgAll_TidyData,"ActivitySubject_Avg.txt", row.names = FALSE)
-write.table(meanStd_Data,"ActivitySubject_Avg.txt", row.names = FALSE)
+# write.table(AvgAll_TidyData,"ActivitySubject_Avg.txt", row.names = FALSE)
+AvgAll_TidyData<-aggregate(meanStd_Data[,4:ncol(meanStd_Data)], by=list(meanStd_Data$Type, meanStd_Data$Subject, meanStd_Data$Activity),FUN = mean)
+names(AvgAll_TidyData)[1:3]<-c("Type", "Subject", "Activity")
+write.table(AvgAll_TidyData,"ActivitySubject_Avg.txt", row.names = FALSE)
    
 
